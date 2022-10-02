@@ -1,2 +1,2 @@
-# blockchain2
+# Blockchain 2
 Blockchain, Python, Javascript, React
