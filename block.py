@@ -1,3 +1,19 @@
+import time
+
+def mine_block(last_block, data):
+    # mines a block based on given last_block and data
+    timestamp = time.time_ns()
+    last_hash = last_block.hash
+    hash = f'{timestamp}-{last_hash}' #temporary for testing
+    
+    return Block(timestamp, last_hash, hash, data)
+
+
+def genesis():
+    # generate the first block
+    return Block(1, 'genesis_last_hash', 'genesis_hash', [])
+
+
 class Block:
     """
     Unit of storage for the Blockchain
@@ -12,16 +28,20 @@ class Block:
     def __repr__(self):
         return (
             'Block('
-            f'timestamp: {self.timestamp},'
-            f'last_hash: {self.last_hash},'
-            f'hash: {self.hash}'
+            f'timestamp: {self.timestamp}, '
+            f'last_hash: {self.last_hash}, '
+            f'hash: {self.hash}, '
             f'data: {self.data}'
             )
         
 def main():
-    block = Block('test_foo')
+    #block = Block('test_foo')
+    #print(block)
+    #print(f'block.py __name__: {__name__}')
+    
+    genesis_block = genesis()
+    block = mine_block(genesis_block, 'firstblock - genesis')
     print(block)
-    print(f'block.py __name__: {__name__}')
     
 if __name__ == '__main__':
     # only prints if called directly, not if called from blockchain.py
