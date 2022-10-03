@@ -1,19 +1,5 @@
 import time
 
-def mine_block(last_block, data):
-    # mines a block based on given last_block and data
-    timestamp = time.time_ns()
-    last_hash = last_block.hash
-    hash = f'{timestamp}-{last_hash}' #temporary for testing
-    
-    return Block(timestamp, last_hash, hash, data)
-
-
-def genesis():
-    # generate the first block
-    return Block(1, 'genesis_last_hash', 'genesis_hash', [])
-
-
 class Block:
     """
     Unit of storage for the Blockchain
@@ -33,14 +19,30 @@ class Block:
             f'hash: {self.hash}, '
             f'data: {self.data}'
             )
+     
+     
+    @staticmethod   
+    def mine_block(last_block, data):
+         # mines a block based on given last_block and data
+        timestamp = time.time_ns()
+        last_hash = last_block.hash
+        hash = f'{timestamp}-{last_hash}' #temporary for testing
+        return Block(timestamp, last_hash, hash, data)
+
+
+    @staticmethod
+    def genesis():
+        # generate the first block
+        return Block(1, 'genesis_last_hash', 'genesis_hash', [])
+
         
 def main():
     #block = Block('test_foo')
     #print(block)
     #print(f'block.py __name__: {__name__}')
     
-    genesis_block = genesis()
-    block = mine_block(genesis_block, 'firstblock - genesis')
+    genesis_block = Block.genesis()
+    block = Block.mine_block(genesis_block, 'firstblock - genesis')
     print(block)
     
 if __name__ == '__main__':
