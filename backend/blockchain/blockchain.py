@@ -1,5 +1,5 @@
 import sys
-sys.path.append('backend.blackchain')
+sys.path.append('backend.blockchain')
 from block import Block
 
 
@@ -39,7 +39,7 @@ class Blockchain:
     @staticmethod
     def is_valid_chain(chain):
         """
-        Validate the incomiing chain.
+        Validate the incoming chain.
         Enforce:
          - the chain must start with a genesis block
          - blocks must be formatted correctly
