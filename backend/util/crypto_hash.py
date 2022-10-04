@@ -9,13 +9,13 @@ def stringify(data):
 
 
 def crypto_hash(*args):
-    # returns sha-256 hash of given arguments * indicates many, but unknow how may
+    # returns sha-256 hash of given arguments, * indicates many, but unknow how may
     #stringifiedargs = map(stringify, args)
     # next line replaces the stringify function above
     stringifiedargs = sorted(map(lambda data: json.dumps(data), args))
-    print(f'stringified_args: {stringifiedargs}')
+    #print(f'stringified_args: {stringifiedargs}')
     joined_data = ''.join(stringifiedargs)
-    print(f'joined_data: {joined_data}')
+    #print(f'joined_data: {joined_data}')
     return hashlib.sha256(joined_data.encode('utf-8')).hexdigest()
 
 

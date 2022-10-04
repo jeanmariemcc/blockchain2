@@ -2,11 +2,10 @@ import sys
 sys.path.append('backend.blackchain')
 from block import Block
 
-
 class Blockchain:
     """
     Blockhain - implemented as a list of blocks,
-        each block contains sets of transactions
+        each blcok contains sets of transactions
     """
     def __init__(self):
         self.chain = [Block.genesis()]
