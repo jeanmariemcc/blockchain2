@@ -95,25 +95,7 @@ class Block:
         )
         
         if block.hash != reconstructed_hash:
-            raise Exception('The block hash does not match, it is not correct')
-        
-        
-    @staticmethod
-    def is_valid_chain(chain):
-        """
-        Validate the incomiing chain.
-        Enforce:
-         - the chain must start with a genesis block
-         - blocks must be formatted correctly
-        """
-        if chain[0] != Block.genisis():
-            raise Exception('The genesis block is not valid')
-        
-        for i in range(1, len(chain)):
-            block = chain[i]
-            last_block = chain[i-1]
-            Block.is_valid_block(last_block, block)
-           
+            raise Exception('The block hash does not match, it is not correct')          
 
         
 def main():
